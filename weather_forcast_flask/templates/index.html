@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}PM2.5 Forecast - AirCast Thailand{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="hero-content">
+                    <div class="hero-icon mb-4">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h1 class="hero-title mb-3">
+                        Air Quality Forecast
+                    </h1>
+                    <p class="hero-subtitle mb-4">
+                        Get AI-powered PM2.5 air pollution forecasts for any province in Thailand. 
+                        Plan your activities with 7-day air quality predictions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="forecast-form-card">
+                <div class="card-header text-center">
+                    <h3 class="card-title mb-1">Select Location & Date</h3>
+                    <p class="text-muted small mb-0">Choose your province and date for PM2.5 forecast</p>
+                </div>
+                
+                <form method="POST" action="{{ url_for('forecast') }}" class="forecast-form">
+                    <div class="form-group mb-4">
+                        <label for="province" class="form-label">
+                            <i class="fas fa-map-marker-alt me-2 text-primary"></i>
+                            Province
+                        </label>
+                        <select class="form-select form-select-lg" id="province" name="province" required>
+                            <option value="">Select a province...</option>
+                            {% for province in provinces %}
+                            <option value="{{ province }}">{{ province }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="date" class="form-label">
+                            <i class="fas fa-calendar-alt me-2 text-primary"></i>
+                            Date
+                        </label>
+                        <input type="date" class="form-control form-control-lg" id="date" name="date" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-lg w-100 submit-btn">
+                        <i class="fas fa-search me-2"></i>
+                        Get Air Quality Forecast
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Info Section -->
+<div class="info-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="info-card text-center">
+                    <div class="info-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>AI-Powered</h4>
+                    <p class="text-muted">Advanced machine learning algorithms analyze weather patterns and historical data</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="info-card text-center">
+                    <div class="info-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>7-Day Forecast</h4>
+                    <p class="text-muted">Get detailed PM2.5 predictions for the next 7 days to plan ahead</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="info-card text-center">
+                    <div class="info-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h4>Hotel Recommendations</h4>
+                    <p class="text-muted">Find nearby accommodations with air quality considerations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
