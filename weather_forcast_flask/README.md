@@ -9,8 +9,13 @@ aircast-thailand/
 │
 ├── app.py                      # Main Flask application
 ├── requirements.txt            # Python dependencies
+|
+├── models/
+|   ├── __init__.py
+|   ├── predictor.py           # class(), mothod()
+|   ├── pm25_xgb_model.pkl     # model
 │
-├── templates/                  # HTML templates
+├── templates/                 # HTML templates
 │   ├── base.html              # Base template with navigation
 │   ├── index.html             # Home page with date/province selection
 │   └── results.html           # Results page with forecast and hotels
